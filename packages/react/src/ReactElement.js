@@ -302,6 +302,10 @@ export function jsxDEV(type, config, maybeKey, source, self) {
  * See https://reactjs.org/docs/react-api.html#createelement
  */
 export function createElement(type, config, children) {
+  // Symbols are define in shared/ReactSymbols
+  if (type === 'div') {
+    type = Symbol.for('react.fragment');
+  }
   let propName;
 
   // Reserved names are extracted
